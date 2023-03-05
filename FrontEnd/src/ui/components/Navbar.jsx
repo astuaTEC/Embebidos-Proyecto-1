@@ -9,8 +9,8 @@ export const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const onLogout = () => {
-        logout();
+    const onLogout = async() => {
+        await logout();
         navigate('/login', {
             replace: true
         })

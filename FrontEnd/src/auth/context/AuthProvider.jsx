@@ -1,10 +1,9 @@
-
-
 import React, { useReducer } from 'react'
+import { apiLogin } from '../../helpers/apiAuthMethods'
 import { types } from '../types/types'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './authReducer'
-
+import Swal from 'sweetalert2';
 // const initialState = {
 //     logged: false
 // }
@@ -23,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
     const [ authState, dispatch ] = useReducer( authReducer, {}, init );
 
-    const login = ( name = '') => {
+    const login =  async( name = '') => {
 
         const user = {
             id: 'ABC',
@@ -33,6 +32,19 @@ export const AuthProvider = ({ children }) => {
         const action = {
             type: types.login,
             payload: user
+        }
+
+        const resp = await apiLogin({email: 'a@email.com', password: '12345'});
+
+        console.log(resp);
+
+        if(!resp){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Credenciales incorrectas'
+              })
+            return;
         }
 
         localStorage.setItem('user', JSON.stringify(user));
