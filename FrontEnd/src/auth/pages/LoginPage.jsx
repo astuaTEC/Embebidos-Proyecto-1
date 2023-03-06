@@ -35,11 +35,11 @@ export const LoginPage = () => {
     const navigate = useNavigate();
 
 
-    const loginSubmit = (event) => {
+    const loginSubmit = async(event) => {
         event.preventDefault();
         const lastPath = localStorage.getItem('lastPath') || '/';
 
-        login('Saymon Astua');
+        await login('Saymon Astua');
         
         navigate(lastPath, {
             replace: true
