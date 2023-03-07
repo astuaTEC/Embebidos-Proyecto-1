@@ -4,6 +4,7 @@ import { types } from '../types/types'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './authReducer'
 import Swal from 'sweetalert2';
+import { loginWithEmailPassword, registerUserWithEmailPassword } from '../../firebase/providers'
 // const initialState = {
 //     logged: false
 // }
@@ -24,27 +25,26 @@ export const AuthProvider = ({ children }) => {
 
     const login =  async( { email = '', password = '' }) => {
 
+        const {ok, uid, photoURL, displayName, errorMessage} = await loginWithEmailPassword({email, password});
+
+        if(!ok) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: errorMessage
+              })
+            return logout();
+        }
+
         const user = {
-            id: 'ABC',
-            name: 'Saymon'
+            id: uid,
+            name: displayName,
+            photoURL
         };
 
         const action = {
             type: types.login,
             payload: user
-        }
-
-        const resp = await apiLogin({email, password });
-
-        console.log(resp);
-
-        if(!resp){
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Credenciales incorrectas'
-              })
-            return;
         }
 
         localStorage.setItem('user', JSON.stringify(user));
@@ -54,27 +54,26 @@ export const AuthProvider = ({ children }) => {
 
     const register =  async( { name = '', email = '', password = '' }) => {
 
+        const {ok, uid, photoURL, errorMessage} = await registerUserWithEmailPassword({email, password, displayName: name});
+
+        if(!ok) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: errorMessage
+              })
+            return logout();
+        }
+
         const user = {
-            id: 'ABC',
-            name
+            id: uid,
+            name: name,
+            photoURL
         };
 
         const action = {
             type: types.login,
             payload: user
-        }
-
-        const resp = await apiLRegister({ name, email, password });
-
-        console.log(resp);
-
-        if(!resp){
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Ya existe un usuario'
-              })
-            return;
         }
 
         localStorage.setItem('user', JSON.stringify(user));
