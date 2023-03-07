@@ -18,8 +18,11 @@ export const CameraPage = () => {
             <button onClick={ onTakePhoto } className='btn btn-primary btn-lg btn-block mb-4'>
                 Take Photo
             </button>
-
-            <PictureCard src={ image }/>
+            
+            {
+                !!image ? <PictureCard src={ image }/> : ''
+            }
+            
         </>
     )
 }

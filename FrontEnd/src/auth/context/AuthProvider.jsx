@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { apiLogin } from '../../helpers/apiAuthMethods'
+import { apiLogin, apiLRegister } from '../../helpers/apiAuthMethods'
 import { types } from '../types/types'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './authReducer'
@@ -22,7 +22,37 @@ export const AuthProvider = ({ children }) => {
 
     const [ authState, dispatch ] = useReducer( authReducer, {}, init );
 
-    const login =  async( name = '') => {
+    const login =  async( { email = '', password = '' }) => {
+
+        const user = {
+            id: 'ABC',
+            name: 'Saymon'
+        };
+
+        const action = {
+            type: types.login,
+            payload: user
+        }
+
+        const resp = await apiLogin({email, password });
+
+        console.log(resp);
+
+        if(!resp){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Credenciales incorrectas'
+              })
+            return;
+        }
+
+        localStorage.setItem('user', JSON.stringify(user));
+
+        dispatch(action);
+    }
+
+    const register =  async( { name = '', email = '', password = '' }) => {
 
         const user = {
             id: 'ABC',
@@ -34,7 +64,7 @@ export const AuthProvider = ({ children }) => {
             payload: user
         }
 
-        const resp = await apiLogin({email: 'a@email.com', password: '12345'});
+        const resp = await apiLRegister({ name, email, password });
 
         console.log(resp);
 
@@ -42,7 +72,7 @@ export const AuthProvider = ({ children }) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Credenciales incorrectas'
+                text: 'Ya existe un usuario'
               })
             return;
         }
@@ -66,7 +96,8 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             ...authState,
             login,
-            logout
+            logout,
+            register
         }}>
             {children}
         </AuthContext.Provider>

@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useForm } from '../../hooks';
 
 import './LoginPage.css';
+import Swal from 'sweetalert2';
 
 
 const loginFormFiels = {
@@ -20,7 +21,7 @@ const registerFormFiels = {
 
 export const LoginPage = () => {
 
-    const { login } = useContext(AuthContext);
+    const { login, register } = useContext(AuthContext);
 
     const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFiels);
     const {
@@ -39,15 +40,20 @@ export const LoginPage = () => {
         event.preventDefault();
         const lastPath = localStorage.getItem('lastPath') || '/';
 
-        await login('Saymon Astua');
+        await login({ email: loginEmail, password: loginPassword});
         
         navigate(lastPath, {
             replace: true
         })
     }
 
-    const registerSubmit = (event) => {
+    const registerSubmit = async(event) => {
         event.preventDefault();
+        if( registerPassword !== registerPassword2){
+            Swal.fire("Error en registro", "Contrasenas no son iguales", 'error');
+            return;
+        }
+        await register({ name: registerName, email: registerEmail, password: registerPassword });
     }
 
     return (
