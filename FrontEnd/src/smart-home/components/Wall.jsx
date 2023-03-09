@@ -19,6 +19,8 @@ const Wall = ({ corner1, corner2, thickness }) => (
       strokeWidth={thickness / 2}
       strokeDasharray={`${thickness * 3} ${thickness}`}
     />
+
+    {/* <circle cx={corner1.x} cy={corner1.y} r={200} fill="red" visibility={ "true" }/> */}
   </g>
 );
 

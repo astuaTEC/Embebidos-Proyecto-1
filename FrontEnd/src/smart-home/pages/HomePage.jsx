@@ -9,7 +9,7 @@ export const HomePage = () => {
             <hr />
 
             <svg
-                viewBox="-1000 -1000 14000 11000"
+                viewBox="-1000 -1000 14000 18000"
                 shapeRendering="geometricPrecision"
             >
                 <Floorplan data={floorplanData} />
