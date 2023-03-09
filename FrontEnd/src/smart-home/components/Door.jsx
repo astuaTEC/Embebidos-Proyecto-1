@@ -1,13 +1,13 @@
 import React from "react";
 
-const Door = ({ corner1, corner2, thickness, active }) => (
+const Door = ({ corner1, corner2, thickness, state }) => (
   <g>
     <line
       x1={corner1.x}
       y1={corner1.y}
       x2={corner2.x}
       y2={corner2.y}
-      stroke={ active ? "black": "white"}
+      stroke={ state === "close" ? "black": "white"}
       strokeWidth={thickness}
     />
     {/* {

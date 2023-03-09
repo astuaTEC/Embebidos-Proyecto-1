@@ -1,13 +1,22 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import Wall from "./Wall";
 import Corner from "./Corner";
 import Door from "./Door";
 import Light from "./Light";
+import { HouseContext } from "../../house-states/context/HouseContext";
 
 const WALL_THICKNESS = 80;
 
 const Room = ({ id, coords, door, light}) => {
-  
+
+  const { lights, doors: doorsContext } = useContext(HouseContext);
+
+  const lightState = lights.find(e => e.id === id);
+
+  const doorsState = doorsContext.find(d => d.id === id);
+
+  //console.log(lightState)
+
   const walls = useMemo(
     () =>
       coords.map((_, i) => {
@@ -52,7 +61,7 @@ const Room = ({ id, coords, door, light}) => {
             key={`door-${a.x},${a.y}-${b.x},${b.y}`}
             corner1={a}
             corner2={b}
-            active={true}
+            state={doorsState?.state}
             thickness={WALL_THICKNESS} 
           />
         ))
@@ -62,6 +71,7 @@ const Room = ({ id, coords, door, light}) => {
           key={`light-${light.x},${light.y}`}
           at={light}
           thickness={WALL_THICKNESS}
+          lightState={ lightState?.state }
         />
       }
       <text

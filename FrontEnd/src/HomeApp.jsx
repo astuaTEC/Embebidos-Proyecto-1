@@ -1,10 +1,13 @@
 import { AuthProvider } from "./auth"
+import { HouseProvider } from "./house-states/context/HouseProvider"
 import { AppRouter } from "./router/AppRouter"
 
 export const HomeApp = () => {
     return (
         <AuthProvider>
-            <AppRouter />
+            <HouseProvider>
+                <AppRouter />
+            </HouseProvider>
         </AuthProvider>
     )
 }

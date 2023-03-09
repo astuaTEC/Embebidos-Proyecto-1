@@ -1,16 +1,20 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/context/AuthContext';
+import { HouseContext } from '../../house-states/context/HouseContext';
 
 
 export const Navbar = () => {
 
     const { user, logout } = useContext(AuthContext);
 
+    const { logoutHouse } = useContext(HouseContext);
+
     const navigate = useNavigate();
 
     const onLogout = async() => {
         await logout();
+        logoutHouse();
         navigate('/login', {
             replace: true
         })
