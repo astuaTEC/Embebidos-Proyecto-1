@@ -1,11 +1,12 @@
 # Presenta el server del proyecto número 1 de Introducción a Embebidos
 
-Install flask:
-- pip install Flask
+Getting started:
 
-Install flask cors:
-pip install -U flask-cors
+	Install flask:
+	- pip install Flask
 
-Set and run:
-- export FLASK_APP=main.py 	# Set main file
-- flask run 		   	# Run
+	Install flask cors:
+	- pip install -U flask-cors
+
+	Run server:
+	- ./runServer.sh
