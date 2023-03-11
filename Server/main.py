@@ -5,7 +5,9 @@ from flask_cors import CORS
 
 
 main = Flask(__name__)
+main.config['DEBUG'] = True
 cors = CORS(main)
+main.config['CORS_HEADERS'] = 'Content-Type'
 
 # Contains an example of a get method
 @main.route('/get/sample', methods=['GET'])
@@ -28,4 +30,5 @@ def LedStatus():
     print(status)
 
     # Return response
-    return "Ok"
+    data = {'ok': 'true'}
+    return jsonify(data), 200
