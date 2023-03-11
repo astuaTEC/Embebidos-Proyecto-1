@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import { apiLogin, apiLRegister } from '../../helpers/apiAuthMethods'
 import { types } from '../types/types'
 import { AuthContext } from './AuthContext'
 import { authReducer } from './authReducer'
