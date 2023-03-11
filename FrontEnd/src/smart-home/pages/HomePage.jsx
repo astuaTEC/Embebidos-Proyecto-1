@@ -1,3 +1,4 @@
+import { setOnLight } from '../../helpers/apiMethods';
 import { ButtonsLights } from '../components/ButtonsLights';
 import Floorplan from '../components/Floorplan'
 import floorplanData from "../helpers/floorplan-data";
