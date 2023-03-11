@@ -2,10 +2,10 @@ import { types } from "../types/types";
 
 const initialState = {
     doors: [
-        {id: "Comedor", state: 'close'},
-        {id: "Cuarto 1", state: 'close'},
-        {id: "Cuarto 2", state: 'close'},
-        {id: "Jardin", state: 'close'},
+        {id: "Comedor", state: 'open'},
+        {id: "Cuarto 1", state: 'open'},
+        {id: "Cuarto 2", state: 'open'},
+        {id: "Jardin", state: 'open'},
     ],
     lights: [
         {id: "Comedor", state: 'off'},
@@ -47,6 +47,31 @@ export const houseReducer = ( state = initialState, action ) => {
                 lights: newLights
             }
 
+        case types.turnOnSpecificLight:
+            newLights = state.lights.map(d => {
+                if(d.id === action.payload){
+                    d.state = "on"
+                }
+                return d;
+            })
+
+            return {
+                ...state,
+                lights: newLights
+            }
+
+        case types.turnOffSpecificLight:
+            newLights = state.lights.map(d => {
+                if (d.id === action.payload) {
+                    d.state = "off"
+                }
+                return d;
+            })
+
+            return {
+                ...state,
+                lights: newLights
+            }
         case types.closeSpecificDoor:
             newDoors = state.doors.map(d => {
                 if(d.id === action.payload){

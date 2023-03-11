@@ -6,10 +6,10 @@ import { houseReducer } from "./houseReducer";
 
 const initialState = {
     doors: [
-        {id: "Comedor", state: 'close'},
-        {id: "Cuarto 1", state: 'close'},
-        {id: "Cuarto 2", state: 'close'},
-        {id: "Jardin", state: 'close'},
+        {id: "Comedor", state: 'open'},
+        {id: "Cuarto 1", state: 'open'},
+        {id: "Cuarto 2", state: 'open'},
+        {id: "Jardin", state: 'open'},
     ],
     lights: [
         {id: "Comedor", state: 'off'},
@@ -22,7 +22,7 @@ const initialState = {
 
 export const HouseProvider = ({ children }) => {
 
-    const [ homeState, dispatch ] = useReducer( houseReducer, initialState);
+    const [ homeState, dispatch ] = useReducer( houseReducer, initialState );
 
 
     const turnOffLights = () => {
@@ -32,6 +32,26 @@ export const HouseProvider = ({ children }) => {
         }
 
         dispatch( action )
+    }
+
+    const turnOnSpecificLight = (light) => {
+
+        const action = {
+            type: types.turnOnSpecificLight,
+            payload: light
+        }
+
+        dispatch( action );
+    }
+
+    const turnOffSpecificLight = (light) => {
+
+        const action = {
+            type: types.turnOffSpecificLight,
+            payload: light
+        }
+
+        dispatch( action );
     }
 
     const turnOnLights = () => {
@@ -64,6 +84,8 @@ export const HouseProvider = ({ children }) => {
             type: types.logoutHouse
         }
         dispatch( action );
+
+        localStorage.clear('lights');
     }
 
     return (
@@ -71,6 +93,8 @@ export const HouseProvider = ({ children }) => {
             ...homeState,
             turnOffLights,
             turnOnLights,
+            turnOnSpecificLight,
+            turnOffSpecificLight,
             openSpecificDoor,
             closeSpecificDoor,
             logoutHouse

@@ -53,11 +53,10 @@ export const Navbar = () => {
                         { user?.name }
                     </span>
 
-                    <button
-                        className='nav-item nav-link btn'
-                        onClick={onLogout}
-                    >
-                        Logout
+                    <button className='btn btn-outline-danger ms-2' onClick={onLogout}>
+                        <i className='fas fa-sign-out-alt'></i>
+                        &nbsp;
+                        <span>Salir</span>
                     </button>
                 </ul>
             </div>
