@@ -4,6 +4,10 @@ import floorplanData from "../helpers/floorplan-data";
 
 export const HomePage = () => {
 
+    const onCheckApiMethod = async( argument ) => {
+        const resp = await setOnLight(argument);
+        console.log(resp);
+    }
 
     return (
         <>
@@ -25,6 +29,13 @@ export const HomePage = () => {
                     <div className="col-2 ms-5 mt-3">
                         
                         <ButtonsLights />
+
+                        <button 
+                            className='btn btn-danger mt-5' 
+                            onClick={() => onCheckApiMethod("Sala")}
+                        >
+                            Prueba
+                        </button>
 
                     </div>
                 </div>
