@@ -9,6 +9,18 @@ main.config['DEBUG'] = True
 cors = CORS(main)
 main.config['CORS_HEADERS'] = 'Content-Type'
 
+
+###Para borrar despues
+import random
+PINS =['1','2','3','4']
+def get_state(id):
+    return random.choice([0,1])
+
+###
+
+
+
+
 # Contains an example of a get method
 @main.route('/get/sample', methods=['GET'])
 def GetSample():
@@ -32,3 +44,50 @@ def LedStatus():
     # Return response
     data = {'ok': 'true'}
     return jsonify(data), 200
+
+#Obtain one door state
+@main.route('/door/status', methods=['GET'])
+def get_door():
+    #GET params
+    id = request.args.get('id')
+    
+    #Print value
+    print(id)
+    
+    #Generic response
+    response = {
+        'error': False,
+        'data' : None,
+        'msg' : None
+    }
+    #Check if pin is valid
+    if id in PINS:
+        response['data']={
+            'state': get_state(id)
+        }
+        
+    else:
+        response['error']=True
+        response['data']='Puerta {id}: No existe'
+        
+    return jsonify(response),200
+
+#Obtain all doors states
+@main.route('/doors/status', methods=['GET'])
+def get_doors():
+
+    response = {
+        'error': False,
+        'data' : None,
+        'msg' : None
+    }
+    
+    response['data']={
+        'door1': get_state(1),
+        'door2': get_state(2),
+        'door3': get_state(3),
+        'door4':get_state(4)
+
+    }
+        
+    return jsonify(response),200
