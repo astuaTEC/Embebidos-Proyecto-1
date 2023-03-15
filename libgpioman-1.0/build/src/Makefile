@@ -175,18 +175,18 @@ CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(top_srcdir)/build-aux/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build-aux/missing aclocal-1.16
+ACLOCAL = ${SHELL} /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build-aux/missing aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = arm-poky-linux-gnueabi-ar
-AUTOCONF = ${SHELL} /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build-aux/missing automake-1.16
+AUTOCONF = ${SHELL} /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build-aux/missing automake-1.16
 AWK = gawk
-CC = arm-poky-linux-gnueabi-gcc  -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/poky/3.1.2/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
+CC = arm-poky-linux-gnueabi-gcc  -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/poky/3.1.21/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
 CCDEPMODE = depmode=gcc3
 CFLAGS =  -O2 -pipe -g -feliminate-unused-debug-types 
-CPP = arm-poky-linux-gnueabi-gcc -E  -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/poky/3.1.2/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
+CPP = arm-poky-linux-gnueabi-gcc -E  -mthumb -mfpu=neon-vfpv4 -mfloat-abi=hard -mcpu=cortex-a7 -fstack-protector-strong  -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=/opt/poky/3.1.21/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
 CPPFLAGS = 
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
@@ -206,7 +206,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = arm-poky-linux-gnueabi-ld  --sysroot=/opt/poky/3.1.2/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
+LD = arm-poky-linux-gnueabi-ld  --sysroot=/opt/poky/3.1.21/sysroots/cortexa7t2hf-neon-vfpv4-poky-linux-gnueabi
 LDFLAGS = -Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed -fstack-protector-strong -Wl,-z,relro,-z,now
 LIBOBJS = 
 LIBS = 
@@ -215,7 +215,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build-aux/missing makeinfo
+MAKEINFO = ${SHELL} /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build-aux/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /usr/bin/mkdir -p
 NM = arm-poky-linux-gnueabi-nm
@@ -238,10 +238,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = arm-poky-linux-gnueabi-strip
 VERSION = 1.0
-abs_builddir = /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build/src
-abs_srcdir = /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build/../src
-abs_top_builddir = /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build
-abs_top_srcdir = /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build/..
+abs_builddir = /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build/src
+abs_srcdir = /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build/../src
+abs_top_builddir = /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build
+abs_top_srcdir = /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build/..
 ac_ct_AR = 
 ac_ct_CC = 
 ac_ct_DUMPBIN = 
@@ -270,7 +270,7 @@ host_vendor = poky
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/build-aux/install-sh
+install_sh = ${SHELL} /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -279,7 +279,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/juanignava/Documents/Embebidos/Embebidos.Proyecto1/libgpioman-1.0/usr
+prefix = /home/samastua/Downloads/Embebidos.Proyecto1-main/libgpioman-1.0/build/usr
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
