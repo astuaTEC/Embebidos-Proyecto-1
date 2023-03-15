@@ -9,7 +9,7 @@ import utils.queries as queries
 main = Flask(__name__)
 main.config["DEBUG"] = True
 cors = CORS(main)
-main.config["CORS_HEADERS"] = "Content-Type"
+#main.config["CORS_HEADERS"] = "Content-Type"
 
 # Contains an example of a get method
 @main.route("/get/sample", methods=["GET"])
@@ -45,16 +45,16 @@ def GetLights():
     response = {
         "error": False,
         "data" : None,
-        "msg" : None
+        "msg" : None,
+        "ok": True
     }
     
-    response["data"]={
+    response["data"]= {
         "Sala": queries.GetLightState("Sala"),
         "Cuarto 1": queries.GetLightState("Cuarto 1"),
         "Cuarto 2": queries.GetLightState("Cuarto 2"),
         "Cocina": queries.GetLightState("Cocina"),
         "Comedor": queries.GetLightState("Comedor"),
-        "ok": True
     }
         
     return jsonify(response),200
@@ -72,13 +72,13 @@ def GetDoor():
     response = {
         "error": False,
         "data" : None,
-        "msg" : None
+        "msg" : None,
+        "ok": True
     }
     #Check if pin is valid
-    if id in values.pins:
-        response["data"]={
+    if id in values.pins["doors"]:
+        response["data"]= {
             "state": queries.GetDoorState(id),
-            "ok": True
         }
         
     else:
@@ -94,7 +94,8 @@ def GetDoors():
     response = {
         "error": False,
         "data" : None,
-        "msg" : None
+        "msg" : None,
+        "ok": True
     }
     
     response["data"]={
@@ -102,7 +103,19 @@ def GetDoors():
         "door2": queries.GetDoorState("2"),
         "door3": queries.GetDoorState("3"),
         "door4": queries.GetDoorState("4"),
-        "ok": True
     }
         
     return jsonify(response),200
+
+
+@main.route('/home/getPhoto', methods=['GET'])
+def GetPhoto():
+
+    img_path = queries.TakePhoto()
+
+    return send_file(img_path)
+
+if __name__ == '__main__':
+    queries.StartLights()
+    queries.StartDoors()
+    main.run(host=values.host, port=values.port)

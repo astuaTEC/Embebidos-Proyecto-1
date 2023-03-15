@@ -1,15 +1,23 @@
-from libGPIO import *
-import values
+from utils.libGPIO import *
+import utils.values as values
 import os
 import datetime
 
-def Start():
+def StartDoors():
     for room, pin in values.pins["doors"].items():
         if export_command(pin) == values.error:
             print(f"Door Error: Pin {pin} for {room} failed to start.")
         else:
             if pin_mode(pin, values.iMode) == values.error:
                 print(f"Door Error: Pin {pin} for {room} failed to start.")
+
+def StartLights():
+    for room, pin in values.pins['rooms'].items():
+        if export_command(pin) == values.error:
+            print(f'Light Error: Pin {pin} for {room} failed to start.')
+        else:
+            if pin_mode(pin, values.oMode) == values.error:
+                print(f'Light Error: Pin {pin} for {room} failed to start.')
 
 def Finish():
     for pin in values.pins["doors"].values():

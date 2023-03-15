@@ -1,5 +1,5 @@
 from ctypes import *
-import values
+import utils.values as values
 
 gpioman_lib = CDLL(values.ourLib)
 
