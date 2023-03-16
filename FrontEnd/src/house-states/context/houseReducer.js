@@ -103,6 +103,42 @@ export const houseReducer = ( state = initialState, action ) => {
                 ...initialState
             }
 
+        case types.updateAllDoors:
+            newDoors = state.doors.map(d => {
+                switch (d.id) {
+                    case "Comedor":
+                        d.state = (action.payload["door1"] === 1) ? 'open' : 'close';
+                        return d;
+                    case "Cuarto 1":
+                        d.state = (action.payload["door2"] === 1) ? 'open' : 'close';
+                        return d;
+                    case "Cuarto 2":
+                        d.state = (action.payload["door3"] === 1) ? 'open' : 'close';
+                        return d;
+                    case "Jardin":
+                        d.state = (action.payload["door4"] === 1) ? 'open' : 'close';
+                        return d;
+                    default:
+                        return d;
+                }
+            })
+
+            return {
+                ...state,
+                doors: newDoors
+            }
+
+            case types.updateAllLights:
+                newLights = state.lights.map(l => {
+                    l.state = (action.payload[`${l.id}`] === 1) ? 'on' : 'off';
+                    return l;
+                })
+    
+                return {
+                    ...state,
+                    lights: newLights
+                }
+    
         default:
             return state;
     }

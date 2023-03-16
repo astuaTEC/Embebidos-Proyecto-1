@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { apiGetDoorsState, apiGetLigthsState, apiUpdateLight } from "../../helpers/apiMethods";
 import { types } from "../types/types";
 import { HouseContext } from "./HouseContext";
 import { houseReducer } from "./houseReducer";
@@ -34,7 +35,11 @@ export const HouseProvider = ({ children }) => {
         dispatch( action )
     }
 
-    const turnOnSpecificLight = (light) => {
+    const turnOnSpecificLight = async(light) => {
+
+        const resp = await apiUpdateLight(light, 1);
+
+        if(!resp) return
 
         const action = {
             type: types.turnOnSpecificLight,
@@ -44,7 +49,11 @@ export const HouseProvider = ({ children }) => {
         dispatch( action );
     }
 
-    const turnOffSpecificLight = (light) => {
+    const turnOffSpecificLight = async(light) => {
+
+        const resp = await apiUpdateLight(light, 0);
+        
+        if(!resp) return
 
         const action = {
             type: types.turnOffSpecificLight,
@@ -63,21 +72,38 @@ export const HouseProvider = ({ children }) => {
         dispatch( action )
     }
 
-    const openSpecificDoor = (door) => {
+    const getAllDoorsState = async() => {
+
+        const resp = await apiGetDoorsState();
+
+        if(!resp) return
+
+        const { data } = resp;
+
         const action = {
-            type: types.openSpecificDoor,
-            payload: door
+            type: types.updateAllDoors,
+            payload: data
         }
+
         dispatch( action );
     }
 
-    const closeSpecificDoor = (door) => {
+    const getAllLightsState = async() => {
+
+        const resp = await apiGetLigthsState();
+
+        if(!resp) return
+
+        const { data } = resp;
+
         const action = {
-            type: types.closeSpecificDoor,
-            payload: door
+            type: types.updateAllLights,
+            payload: data
         }
+
         dispatch( action );
     }
+
 
     const logoutHouse = () => {
         const action = {
@@ -95,9 +121,9 @@ export const HouseProvider = ({ children }) => {
             turnOnLights,
             turnOnSpecificLight,
             turnOffSpecificLight,
-            openSpecificDoor,
-            closeSpecificDoor,
-            logoutHouse
+            logoutHouse,
+            getAllDoorsState,
+            getAllLightsState
         }}>
             {children}
         </HouseContext.Provider>

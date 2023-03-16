@@ -1,14 +1,29 @@
-import { setOnLight } from '../../helpers/apiMethods';
+import { useContext, useEffect } from 'react';
+import { useInterval } from '../../hooks/useInterval';
+import { HouseContext } from '../../house-states/context/HouseContext';
 import { ButtonsLights } from '../components/ButtonsLights';
 import Floorplan from '../components/Floorplan'
 import floorplanData from "../helpers/floorplan-data";
 
 export const HomePage = () => {
 
-    const onCheckApiMethod = async( argument ) => {
-        const resp = await setOnLight(argument);
-        console.log(resp);
-    }
+    const { getAllDoorsState, getAllLightsState } = useContext(HouseContext);
+
+    useInterval(async() => {
+        // Your custom logic here
+        await getAllDoorsState();
+      }, 1500);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await getAllLightsState();
+        }
+        fetchData()
+            // make sure to catch any error
+            .catch(console.error);
+
+    }, [])
+      
 
     return (
         <>
@@ -30,13 +45,6 @@ export const HomePage = () => {
                     <div className="col-2 ms-5 mt-3">
                         
                         <ButtonsLights />
-
-                        <button 
-                            className='btn btn-danger mt-5' 
-                            onClick={() => onCheckApiMethod("Sala")}
-                        >
-                            Prueba
-                        </button>
 
                     </div>
                 </div>
