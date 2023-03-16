@@ -29,36 +29,18 @@ export const apiUpdateLight = async( light, state ) => {
 
 }
 
-export const setOnAllLights = async( ) => {
-    const url = VITE_BASE_URL + "/light/on";
-    try {
-        const resp = await fetch(url, {
-            method: 'POST',
-            body: { light: "all" }
-        });
 
-        if(!resp.ok) throw new Error('Ha surgido un error');
-
-        const respJson = await resp.json();
-        
-        return respJson;
-
-    } catch (error) {
-
-        throw new Error(error);
-    }
-
-}
-
-
-export const setOffAllLights = async( ) => {
-    const url = VITE_BASE_URL + "/light/off";
+export const updateAllLights = async( state ) => {
+    const url = VITE_BASE_URL + "/light/all/change";
     
     try {
         const resp = await fetch(url, {
-            method: 'POST',
-            body: { light: "all" }
-        });
+            method: "POST",
+            headers: {
+            'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({ status: state })
+            });
 
         if(!resp.ok) throw new Error('Ha surgido un error');
 
@@ -67,8 +49,8 @@ export const setOffAllLights = async( ) => {
         return respJson;
 
     } catch (error) {
-
-        throw new Error(error);
+        console.log(error);
+        return null
     }
 
 }

@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { apiGetDoorsState, apiGetLigthsState, apiUpdateLight } from "../../helpers/apiMethods";
+import { apiGetDoorsState, apiGetLigthsState, apiUpdateLight, updateAllLights } from "../../helpers/apiMethods";
 import { types } from "../types/types";
 import { HouseContext } from "./HouseContext";
 import { houseReducer } from "./houseReducer";
@@ -26,7 +26,24 @@ export const HouseProvider = ({ children }) => {
     const [ homeState, dispatch ] = useReducer( houseReducer, initialState );
 
 
-    const turnOffLights = () => {
+    const turnOnLights = async() => {
+
+        const resp = await updateAllLights(1);
+
+        if(!resp) return
+
+        const action = {
+            type: types.turnOnLights
+        }
+
+        dispatch( action )
+    }
+
+    const turnOffLights = async() => {
+
+        const resp = await updateAllLights(0);
+
+        if(!resp) return
 
         const action = {
             type: types.turnOffLights
@@ -61,15 +78,6 @@ export const HouseProvider = ({ children }) => {
         }
 
         dispatch( action );
-    }
-
-    const turnOnLights = () => {
-
-        const action = {
-            type: types.turnOnLights
-        }
-
-        dispatch( action )
     }
 
     const getAllDoorsState = async() => {
