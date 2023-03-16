@@ -75,6 +75,39 @@
 			"response": []
 		},
 		{
+			"name": "Light update All",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.100.110:5000/light/all/change",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"light",
+						"all",
+						"change"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "All Doors Status",
 			"request": {
 				"method": "GET",
