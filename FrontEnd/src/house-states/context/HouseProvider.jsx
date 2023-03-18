@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { apiGetDoorsState, apiGetLigthsState, apiUpdateLight, updateAllLights } from "../../helpers/apiMethods";
+import { apiGetDoorsState, apiGetLigthsState, apiTakePhoto, apiUpdateLight, updateAllLights } from "../../helpers/apiMethods";
 import { types } from "../types/types";
 import { HouseContext } from "./HouseContext";
 import { houseReducer } from "./houseReducer";

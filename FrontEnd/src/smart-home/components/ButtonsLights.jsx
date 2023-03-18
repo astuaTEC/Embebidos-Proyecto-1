@@ -4,7 +4,7 @@ import { HouseContext } from '../../house-states/context/HouseContext';
 
 
 
-const lightsInitState = {
+const lightInitState = {
     "Cocina": false,
     "Comedor": false,
     "Cuarto 1": false,
@@ -19,7 +19,7 @@ export const ButtonsLights = () => {
     const { turnOnLights, turnOffLights, turnOnSpecificLight,
         turnOffSpecificLight } = useContext(HouseContext);
 
-    const [allLightsState, setAllLightsState] = useState( JSON.parse(localStorage.getItem('lights')) || lightsInitState);
+    const [allLightsState, setAllLightsState] = useState( JSON.parse(localStorage.getItem('lights')) || lightInitState);
 
     const onTurnOnLights = () => {
         turnOnLights();
