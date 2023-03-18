@@ -70,6 +70,6 @@ def GetLightState(room: str):
     return result
 
 def TakePhoto():
-    image_name = f'/server/src/{datetime.datetime.now()}.jpg'.replace(' ', '_')
+    image_name = f'/Server/src/{datetime.datetime.now()}.jpg'.replace(' ', '_')
     os.system(f'fswebcam --no-banner {image_name}')
     return image_name
