@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "64e9d9e9-4e23-4588-94f7-338e6bb1b16c",
+		"name": "Proyecto-1-Embebidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Light status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://192.168.100.110:5000/light/status",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"light",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Light update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"area\": \"Sala\",\n    \"status\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.100.110:5000/light/update",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"light",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Light update All",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.100.110:5000/light/all/change",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"light",
+						"all",
+						"change"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Doors Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.100.110:5000/doors/status",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"doors",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One door state",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.100.110:5000/door/status?id=1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"door",
+						"status"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Take photo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.100.110:5000/home/getPhoto",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"100",
+						"110"
+					],
+					"port": "5000",
+					"path": [
+						"home",
+						"getPhoto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
